@@ -1,0 +1,33 @@
+.AuthPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2vmin;
+}
+
+.Authpage > div {
+    display: flex;
+    align-content: space-between;
+    border: 1px solid white;
+}
+  
+.AuthPage h3 {
+    margin-top: 4vmin;
+    text-align: center;
+    color: var(--tan-3);
+    background-color: var(--plum);
+    border: .1vmin solid var(--tan-3);
+    border-radius: .5vmin;
+    margin-left: 60px;
+    margin-right: 60px;
+    cursor: pointer;
+}
+
+.Authpage h3:hover {
+    background-color: #860814;
+}
