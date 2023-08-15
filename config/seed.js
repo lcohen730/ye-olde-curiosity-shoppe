@@ -1,11 +1,11 @@
 require('dotenv').config();
 require('./database');
-const fs = require('fs');
-const path = require('path');
+/* const fs = require('fs');
+const path = require('path'); */
 
 const Category = require('../models/category');
 const Item = require('../models/item');
-const Image = require('../models/image');
+/* const Image = require('../models/image'); */
 
 (async function() {
 
@@ -18,7 +18,7 @@ const Image = require('../models/image');
     {name: 'Books', sortOrder: 50},
   ]);
 
-  const siameseFilePath = path.resolve('/Users/lauracohen/portfolio-projects/projects/unit-3-project/public/img/siamese-twins-skeleton.jpeg');
+  /* const siameseFilePath = path.resolve('/Users/lauracohen/portfolio-projects/projects/unit-3-project/public/img/siamese-twins-skeleton.jpeg');
   // const siameseFilePath = path.resolve('../public/img/siamese-twins-skeleton.jpeg');
   const siameseImage = new Image({
     image: Buffer.from(fs.readFileSync(siameseFilePath)),
@@ -27,7 +27,7 @@ const Image = require('../models/image');
   siameseImage.save();
   const siamese = Image.findOne({
     _id: siameseImage._id,
-  });
+  }); */
 
   await Item.deleteMany({});
   const items = await Item.create([

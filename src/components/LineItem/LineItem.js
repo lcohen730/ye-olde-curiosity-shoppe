@@ -27,6 +27,10 @@ return (
       }
     </div>
     <div className={styles.extPrice}>${lineItem.extPrice.toFixed(2)}</div>
+    <button
+      className="btn-xs"
+      onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty = 0)}
+    >🗑️</button>
   </div>
 );
 }
