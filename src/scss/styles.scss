@@ -145,6 +145,12 @@ a.button:hover {
   background-color: var(--blood-red);
 }
 
+button.btn-m {
+  font-size: 1.2vmin;
+  padding: .5vmin 0 .5vmin 0;
+  margin: 0 5vmin 0 5vmin;
+}
+
 button.btn-sm {
   font-size: 1.5vmin;
   padding: .6vmin .8vmin;
