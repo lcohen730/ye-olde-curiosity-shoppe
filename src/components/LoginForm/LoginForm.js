@@ -39,7 +39,7 @@ return (
         <button type="submit">LOG IN</button>
       </form>
     </div>
-    <p className="error-message">&nbsp;{error}</p>
+    <p className="error-message" style={ error ? { backgroundColor: 'var(--blood-red)', marginLeft: '10vmin', marginRight: '10vmin', borderRadius: '1vmin' } : null }>&nbsp;{error}</p>
   </div>
 );
 }

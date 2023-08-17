@@ -92,10 +92,8 @@ code {
 }
 
 p.error-message {
-  /* background-color: var(--blood-red); */
   color: var(--tan-3);
   text-align: center;
-  /* visibility: hidden; */
 }
 
 form {
@@ -167,7 +165,7 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--plum);
+  background-color: var(--blood-red);
   font-family: 'Eater', cursive;
   margin-left: 17vmin;
   margin-right: 17vmin;
@@ -177,4 +175,7 @@ form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+  margin-left: 17vmin;
+  margin-right: 17vmin;
+  padding: .5vmin;
 }

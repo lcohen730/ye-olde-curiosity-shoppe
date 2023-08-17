@@ -57,7 +57,7 @@ render() {
           <button type="submit" disabled={disable}>SIGN UP</button>
         </form>
       </div>
-      <p className="error-message" style={{ backgroundColor: 'red' }}>&nbsp;{this.state.error}</p>
+      <p className="error-message" style={ this.state.error ? { backgroundColor: 'var(--blood-red)', marginLeft: '10vmin', marginRight: '10vmin', borderRadius: '1vmin' } : null }>&nbsp;{this.state.error}</p>
     </div>
   );
 }

@@ -7,17 +7,12 @@ import Logo from '../../components/Logo/Logo';
 export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(null);
 
-  /* function handleClick() {
-    setShowLogin(null)
-  } */
-
   return (
     <>
       {
         showLogin === true ?
           <main className={styles.AuthPage}>
             <div className={styles.container}>
-              {/* <Logo onClick={handleClick} /> */}
               <Logo />
               {/* <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3> */}
               <div className={styles.buttons}>
@@ -32,7 +27,6 @@ export default function AuthPage({ setUser }) {
           : showLogin === false ?
             <main className={styles.AuthPage}>
               <div className={styles.container}>
-                {/* <Logo onClick={handleClick} /> */}
                 <Logo />
                 {/* <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3> */}
                 <div className={styles.buttons}>

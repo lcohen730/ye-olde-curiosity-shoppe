@@ -15,6 +15,14 @@ export default function MenuListItem({ menuItem, handleAddToOrder }) {
         <button className="btn-sm" onClick={() => handleAddToOrder(menuItem._id)}>
           ADD
         </button>
+        {/* Source for stars: https://stackoverflow.com/questions/44409491/css-star-outline */}
+        <div className={styles.rating}>
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+        </div>
       </div>
     </div>
   );

@@ -165,7 +165,13 @@ function LoginForm(_ref) {
   }), /*#__PURE__*/React.createElement("button", {
     type: "submit"
   }, "LOG IN"))), /*#__PURE__*/React.createElement("p", {
-    className: "error-message"
+    className: "error-message",
+    style: error ? {
+      backgroundColor: 'var(--blood-red)',
+      marginLeft: '10vmin',
+      marginRight: '10vmin',
+      borderRadius: '1vmin'
+    } : null
   }, "\xA0", error));
 }
 
@@ -260,7 +266,9 @@ function MenuListItem(_ref) {
   }, /*#__PURE__*/React.createElement("span", null, "$", menuItem.price.toFixed(2)), /*#__PURE__*/React.createElement("button", {
     className: "btn-sm",
     onClick: () => handleAddToOrder(menuItem._id)
-  }, "ADD")));
+  }, "ADD"), /*#__PURE__*/React.createElement("div", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].rating
+  }, /*#__PURE__*/React.createElement("span", null, "\u2606"), /*#__PURE__*/React.createElement("span", null, "\u2606"), /*#__PURE__*/React.createElement("span", null, "\u2606"), /*#__PURE__*/React.createElement("span", null, "\u2606"), /*#__PURE__*/React.createElement("span", null, "\u2606"))));
 }
 
 /***/ }),
@@ -495,9 +503,12 @@ class SignUpForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       disabled: disable
     }, "SIGN UP"))), /*#__PURE__*/React.createElement("p", {
       className: "error-message",
-      style: {
-        backgroundColor: 'red'
-      }
+      style: this.state.error ? {
+        backgroundColor: 'var(--blood-red)',
+        marginLeft: '10vmin',
+        marginRight: '10vmin',
+        borderRadius: '1vmin'
+      } : null
     }, "\xA0", this.state.error));
   }
 }
@@ -654,11 +665,6 @@ function AuthPage(_ref) {
     setUser
   } = _ref;
   const [showLogin, setShowLogin] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-
-  /* function handleClick() {
-    setShowLogin(null)
-  } */
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, showLogin === true ? /*#__PURE__*/React.createElement("main", {
     className: _AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].AuthPage
   }, /*#__PURE__*/React.createElement("div", {
@@ -1731,6 +1737,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.zoHqXn3WE8EDtN1a0D86 {
   margin-right: 30vw;
   padding-left: 2vmin;
   padding-right: 2vmin;
+  box-shadow: 2px 2px 5px var(--black);
   cursor: pointer;
 }
 
@@ -1776,7 +1783,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.zoHqXn3WE8EDtN1a0D86 {
 
 .GneQgjlnBwxxTh73S92J h3:hover {
   background-color: #860814;
-}`, "",{"version":3,"sources":["webpack://./src/pages/AuthPage/AuthPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AACJ;AACI;EACI,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,kCAAA;EACA,sCAAA;EACA,oBAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,eAAA;AACR;;AAGA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AAAJ;AAEI;EACI,aAAA;EACA,8BAAA;EACA,aAAA;EACA,iBAAA;AAAR;AAGI;EACI,aAAA;AADR;AAII;EACI,aAAA;EACA,qBAAA;EACA,kBAAA;AAFR;;AAMA;EACI,kBAAA;EACA,mBAAA;EACA,6BAAA;EACA,kCAAA;EACA,sBAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,sBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,yBAAA;AAHJ","sourcesContent":[".home {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    align-items: center;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .enter {\n        font-size: 1.75em;\n        text-align: center;\n        color: var(--tan-3);\n        background-color: var(--blood-red);\n        border: .4vmin ridge var(--blood-red);\n        border-radius: 1vmin;\n        margin-left: 30vw;\n        margin-right: 30vw;\n        padding-left: 2vmin;\n        padding-right: 2vmin;\n        cursor: pointer;\n    }\n}\n\n.AuthPage {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-items: flex-start;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .container {\n        display: flex;\n        justify-content: space-between;\n        width: 95vmax;\n        margin-top: 3vmin;\n    }\n\n    .buttons {\n        display: flex;\n    }\n\n    .form {\n        display: flex;\n        align-content: center;\n        margin-top: 20vmin;\n    }\n}\n\n.AuthPage h3 {\n    text-align: center;\n    color: var(--tan-3);\n    background-color: var(--plum);\n    border: .1vmin solid var(--tan-3);\n    border-radius: .5vmin;\n    margin-top: -.1vmin;\n    margin-left: 2vmin;\n    padding-left: 1vmin;\n    padding-right: 1vmin;\n    margin-bottom: 7.5vmin;\n    cursor: pointer;\n}\n\n.Authpage h3:hover {\n    background-color: #860814;\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/pages/AuthPage/AuthPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AACJ;AACI;EACI,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,kCAAA;EACA,sCAAA;EACA,oBAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,oCAAA;EACA,eAAA;AACR;;AAGA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AAAJ;AAEI;EACI,aAAA;EACA,8BAAA;EACA,aAAA;EACA,iBAAA;AAAR;AAGI;EACI,aAAA;AADR;AAII;EACI,aAAA;EACA,qBAAA;EACA,kBAAA;AAFR;;AAMA;EACI,kBAAA;EACA,mBAAA;EACA,6BAAA;EACA,kCAAA;EACA,sBAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,sBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,yBAAA;AAHJ","sourcesContent":[".home {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    align-items: center;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .enter {\n        font-size: 1.75em;\n        text-align: center;\n        color: var(--tan-3);\n        background-color: var(--blood-red);\n        border: .4vmin ridge var(--blood-red);\n        border-radius: 1vmin;\n        margin-left: 30vw;\n        margin-right: 30vw;\n        padding-left: 2vmin;\n        padding-right: 2vmin;\n        box-shadow: 2px 2px 5px var(--black);\n        cursor: pointer;\n    }\n}\n\n.AuthPage {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-items: flex-start;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .container {\n        display: flex;\n        justify-content: space-between;\n        width: 95vmax;\n        margin-top: 3vmin;\n    }\n\n    .buttons {\n        display: flex;\n    }\n\n    .form {\n        display: flex;\n        align-content: center;\n        margin-top: 20vmin;\n    }\n}\n\n.AuthPage h3 {\n    text-align: center;\n    color: var(--tan-3);\n    background-color: var(--plum);\n    border: .1vmin solid var(--tan-3);\n    border-radius: .5vmin;\n    margin-top: -.1vmin;\n    margin-left: 2vmin;\n    padding-left: 1vmin;\n    padding-right: 1vmin;\n    margin-bottom: 7.5vmin;\n    cursor: pointer;\n}\n\n.Authpage h3:hover {\n    background-color: #860814;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"home": `zoHqXn3WE8EDtN1a0D86`,
@@ -1994,10 +2001,8 @@ code {
 }
 
 p.fgWR5Asb2guMuboowfoa {
-  /* background-color: var(--blood-red); */
   color: var(--tan-3);
   text-align: center;
-  /* visibility: hidden; */
 }
 
 form {
@@ -2069,7 +2074,7 @@ button.mmcnNCjhUQqEoaSf8Yur {
 button:disabled,
 form:invalid button[type=submit] {
   cursor: not-allowed;
-  background-color: var(--plum);
+  background-color: var(--blood-red);
   font-family: "Eater", cursive;
   margin-left: 17vmin;
   margin-right: 17vmin;
@@ -2079,7 +2084,10 @@ form:invalid button[type=submit] {
 button[type=submit] {
   grid-column: span 2;
   margin: 1vmin 0 0;
-}`, "",{"version":3,"sources":["webpack://./src/scss/styles.scss"],"names":[],"mappings":"AAAA,0BAAA;AACA;EACE,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,qBAAA;EACA,oBAAA;AACF;;AAEA;;;EAGE,sBAAA;AACF;;AAEA;EACE,SAAA;EACA;;mBAAA;EAGA,6BAAA;EACA,mCAAA;EACA,kCAAA;EACA,6BAAA;EACA,cAAA;EACA,aAAA;AACF;;AAEA;EACE,+EAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,iBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,sBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,kCAAA;EACA,uBAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,kBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,cAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,oCAAA;AAAF;;AAGA;EACE,wCAAA;EACA,mBAAA;EACA,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,cAAA;EACA,gBAAA;EACA,kCAAA;EACA,sBAAA;EACA,uBAAA;EACA,iCAAA;EACA,qBAAA;EACA,aAAA;AAAF;;AAGA;EACE,8BAAA;AAAF;;AAGA;;EAEE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kCAAA;EACA,sBAAA;EACA,aAAA;EACA,eAAA;AAAF;;AAGA;;EAEE,kCAAA;AAAF;;AAGA;EACE,kBAAA;EACA,4BAAA;EACA,uBAAA;AAAF;;AAGA;EACE,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,wBAAA;AAAF;;AAGA;;EAEE,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,mBAAA;EACA,iBAAA;AAAF","sourcesContent":["/* CSS Custom Properties */\n:root {\n  --white: #FFFFFF;\n  --dark-gray: #5f5f5fb1;\n  --tan-2: #E7E2DD;\n  --tan-3: #E2D9D1;\n  --plum: #84628c;\n  --black: #000000;\n  --blood-red: #860814;\n  --text-light: #968c84;\n  --text-dark: #615954;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n      sans-serif; */\n  font-family: 'Eater', cursive;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: var(--plum);\n  padding: 2vmin;\n  height: 100vh;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n\n#root {\n  height: 100%;\n}\n\n.align-ctr {\n  text-align: center;\n}\n\n.align-rt {\n  text-align: right;\n}\n\n.smaller {\n  font-size: smaller;\n}\n\n.flex-ctr-ctr {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 15px;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.flex-j-end {\n  justify-content: flex-end;\n}\n\n.scroll-y {\n  overflow-y: scroll;\n}\n\n.section-heading {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: var(--dark-gray);\n  color: var(--text-dark);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  padding: .6vmin;\n  text-align: center;\n  font-size: 2vmin;\n}\n\n.form-container {\n  padding: 3vmin;\n  background-color: var(--dark-gray);\n  border: .1vmin solid var(--black);\n  border-radius: 1vmin;\n  box-shadow: 5px 5px 5px var(--black);\n}\n\np.error-message {\n  /* background-color: var(--blood-red); */\n  color: var(--tan-3);\n  text-align: center;\n  /* visibility: hidden; */\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr 3fr;\n  gap: 1.25vmin;\n  color: var(--tan-3);\n}\n\nlabel {\n  font-size: 2vmin;\n  display: flex;\n  align-items: center;\n}\n\ninput {\n  padding: 1vmin;\n  font-size: 2vmin;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  color: var(--text-dark);\n  background-image: none !important;\n  /* prevent lastpass */\n  outline: none;\n}\n\ninput:focus {\n  border-color: var(--dark-gray);\n}\n\nbutton,\na.button {\n  margin: 1vmin;\n  padding: 1vmin;\n  color: var(--tan-3);\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  font-size: 2vmin;\n  font-weight: bold;\n  text-decoration: none;\n  text-align: center;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  outline: none;\n  cursor: pointer;\n}\n\nbutton:hover,\na.button:hover {\n  background-color: var(--blood-red);\n}\n\nbutton.btn-m {\n  font-size: 1.2vmin;\n  padding: .5vmin 0 .5vmin 0;\n  margin: 0 5vmin 0 5vmin;\n}\n\nbutton.btn-sm {\n  font-size: 1.5vmin;\n  padding: .6vmin .8vmin;\n}\n\nbutton.btn-xs {\n  font-size: 1vmin;\n  padding: .4vmin .5vmin;\n}\n\nbutton:disabled,\nform:invalid button[type=\"submit\"] {\n  cursor: not-allowed;\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}\n\nbutton[type=\"submit\"] {\n  grid-column: span 2;\n  margin: 1vmin 0 0;\n}"],"sourceRoot":""}]);
+  margin-left: 17vmin;
+  margin-right: 17vmin;
+  padding: 0.5vmin;
+}`, "",{"version":3,"sources":["webpack://./src/scss/styles.scss"],"names":[],"mappings":"AAAA,0BAAA;AACA;EACE,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,qBAAA;EACA,oBAAA;AACF;;AAEA;;;EAGE,sBAAA;AACF;;AAEA;EACE,SAAA;EACA;;mBAAA;EAGA,6BAAA;EACA,mCAAA;EACA,kCAAA;EACA,6BAAA;EACA,cAAA;EACA,aAAA;AACF;;AAEA;EACE,+EAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,iBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,sBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,kCAAA;EACA,uBAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,kBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,cAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,oCAAA;AAAF;;AAGA;EACE,mBAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,cAAA;EACA,gBAAA;EACA,kCAAA;EACA,sBAAA;EACA,uBAAA;EACA,iCAAA;EACA,qBAAA;EACA,aAAA;AAAF;;AAGA;EACE,8BAAA;AAAF;;AAGA;;EAEE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kCAAA;EACA,sBAAA;EACA,aAAA;EACA,eAAA;AAAF;;AAGA;;EAEE,kCAAA;AAAF;;AAGA;EACE,kBAAA;EACA,4BAAA;EACA,uBAAA;AAAF;;AAGA;EACE,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,wBAAA;AAAF;;AAGA;;EAEE,mBAAA;EACA,kCAAA;EACA,6BAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,mBAAA;EACA,iBAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF","sourcesContent":["/* CSS Custom Properties */\n:root {\n  --white: #FFFFFF;\n  --dark-gray: #5f5f5fb1;\n  --tan-2: #E7E2DD;\n  --tan-3: #E2D9D1;\n  --plum: #84628c;\n  --black: #000000;\n  --blood-red: #860814;\n  --text-light: #968c84;\n  --text-dark: #615954;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n      sans-serif; */\n  font-family: 'Eater', cursive;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: var(--plum);\n  padding: 2vmin;\n  height: 100vh;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n\n#root {\n  height: 100%;\n}\n\n.align-ctr {\n  text-align: center;\n}\n\n.align-rt {\n  text-align: right;\n}\n\n.smaller {\n  font-size: smaller;\n}\n\n.flex-ctr-ctr {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 15px;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.flex-j-end {\n  justify-content: flex-end;\n}\n\n.scroll-y {\n  overflow-y: scroll;\n}\n\n.section-heading {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: var(--dark-gray);\n  color: var(--text-dark);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  padding: .6vmin;\n  text-align: center;\n  font-size: 2vmin;\n}\n\n.form-container {\n  padding: 3vmin;\n  background-color: var(--dark-gray);\n  border: .1vmin solid var(--black);\n  border-radius: 1vmin;\n  box-shadow: 5px 5px 5px var(--black);\n}\n\np.error-message {\n  color: var(--tan-3);\n  text-align: center;\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr 3fr;\n  gap: 1.25vmin;\n  color: var(--tan-3);\n}\n\nlabel {\n  font-size: 2vmin;\n  display: flex;\n  align-items: center;\n}\n\ninput {\n  padding: 1vmin;\n  font-size: 2vmin;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  color: var(--text-dark);\n  background-image: none !important;\n  /* prevent lastpass */\n  outline: none;\n}\n\ninput:focus {\n  border-color: var(--dark-gray);\n}\n\nbutton,\na.button {\n  margin: 1vmin;\n  padding: 1vmin;\n  color: var(--tan-3);\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  font-size: 2vmin;\n  font-weight: bold;\n  text-decoration: none;\n  text-align: center;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  outline: none;\n  cursor: pointer;\n}\n\nbutton:hover,\na.button:hover {\n  background-color: var(--blood-red);\n}\n\nbutton.btn-m {\n  font-size: 1.2vmin;\n  padding: .5vmin 0 .5vmin 0;\n  margin: 0 5vmin 0 5vmin;\n}\n\nbutton.btn-sm {\n  font-size: 1.5vmin;\n  padding: .6vmin .8vmin;\n}\n\nbutton.btn-xs {\n  font-size: 1vmin;\n  padding: .4vmin .5vmin;\n}\n\nbutton:disabled,\nform:invalid button[type=\"submit\"] {\n  cursor: not-allowed;\n  background-color: var(--blood-red);\n  font-family: 'Eater', cursive;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}\n\nbutton[type=\"submit\"] {\n  grid-column: span 2;\n  margin: 1vmin 0 0;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"root": `tjWEEomjEYxLvWlDEOE3`,
@@ -3066,4 +3074,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.c04252dfa687401294427117b9533bfd.js.map
+//# sourceMappingURL=App.5ac64fc5acb65ec0d953517d6c69084c.js.map
