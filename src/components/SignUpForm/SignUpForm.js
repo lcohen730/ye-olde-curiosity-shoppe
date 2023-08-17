@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { signUp } from '../../utilities/users-service';
+import { redirect } from "react-router";
+import '../../scss/styles.scss';
 
 export default class SignUpForm extends Component {
 state = {
@@ -55,7 +57,7 @@ render() {
           <button type="submit" disabled={disable}>SIGN UP</button>
         </form>
       </div>
-      <p className="error-message">&nbsp;{this.state.error}</p>
+      <p className="error-message" style={{ backgroundColor: 'red' }}>&nbsp;{this.state.error}</p>
     </div>
   );
 }

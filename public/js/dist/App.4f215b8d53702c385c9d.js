@@ -194,7 +194,7 @@ function Logo(_ref) {
     // ternary to switch between home and other logo
     React.createElement("div", {
       className: "".concat(_Logo_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].Logo, " ").concat(home ? _Logo_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].largeLogo : _Logo_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].smallLogo)
-    }, home ? /*#__PURE__*/React.createElement("div", null, "YE OLDE") : /*#__PURE__*/React.createElement("div", null, "YE OLDE"), /*#__PURE__*/React.createElement("div", null, "CURIOSITY SHOPPE"))
+    }, /*#__PURE__*/React.createElement("div", null, "YE OLDE"), /*#__PURE__*/React.createElement("div", null, "CURIOSITY SHOPPE"))
   );
 }
 
@@ -300,7 +300,7 @@ function OrderDetail(_ref) {
     className: _OrderDetail_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].sectionHeading
   }, order.isPaid ? /*#__PURE__*/React.createElement("span", null, "ORDER  ", /*#__PURE__*/React.createElement("span", {
     className: "smaller"
-  }, order.orderId), "  ") : /*#__PURE__*/React.createElement("span", null, "YOUR CART"), order.isPaid ? /*#__PURE__*/React.createElement("span", null, new Date(order.updatedAt).toLocaleDateString()) : null), /*#__PURE__*/React.createElement("div", {
+  }, order.orderId), "  ") : /*#__PURE__*/React.createElement("span", null, "YOUR CART"), order.isPaid ? /*#__PURE__*/React.createElement("span", null, new Date(order.updatedAt).toLocaleDateString('en-US')) : null), /*#__PURE__*/React.createElement("div", {
     className: "".concat(_OrderDetail_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].lineItemContainer, " flex-ctr-ctr flex-col scroll-y")
   }, lineItems.length ? /*#__PURE__*/React.createElement(React.Fragment, null, lineItems, /*#__PURE__*/React.createElement("section", {
     className: _OrderDetail_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].total
@@ -379,7 +379,7 @@ function OrderListItem(_ref) {
     className: "smaller"
   }, order.orderId)), /*#__PURE__*/React.createElement("div", {
     className: "smaller"
-  }, new Date(order.updatedAt).toLocaleDateString())), /*#__PURE__*/React.createElement("div", {
+  }, new Date(order.updatedAt).toLocaleDateString('en-US'))), /*#__PURE__*/React.createElement("div", {
     className: "align-rt"
   }, /*#__PURE__*/React.createElement("div", null, "$", order.orderTotal.toFixed(2)), /*#__PURE__*/React.createElement("div", {
     className: "smaller"
@@ -399,7 +399,8 @@ function OrderListItem(_ref) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utilities_users_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/users-service */ "./src/utilities/users-service.js");
+/* harmony import */ var _utilities_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/users-service */ "./src/utilities/users-service.js");
+/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scss/styles.scss */ "./src/scss/styles.scss");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -408,6 +409,8 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typ
 function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 class SignUpForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
@@ -438,7 +441,7 @@ class SignUpForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
           // The promise returned by the signUp service method
           // will resolve to the user object included in the
           // payload of the JSON Web Token (JWT)
-          const user = yield (0,_utilities_users_service__WEBPACK_IMPORTED_MODULE_1__.signUp)(formData);
+          const user = yield (0,_utilities_users_service__WEBPACK_IMPORTED_MODULE_2__.signUp)(formData);
           // Baby step
           _this.props.setUser(user);
         } catch (_unused) {
@@ -491,7 +494,10 @@ class SignUpForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       type: "submit",
       disabled: disable
     }, "SIGN UP"))), /*#__PURE__*/React.createElement("p", {
-      className: "error-message"
+      className: "error-message",
+      style: {
+        backgroundColor: 'red'
+      }
     }, "\xA0", this.state.error));
   }
 }
@@ -1585,9 +1591,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.SbDKL2bctOyC5ZgA0KfW {
   align-items: center;
   margin-bottom: 3vmin;
   padding: 2vmin;
-  color: var(--text-light);
+  color: var(--tan-3);
   background-color: var(--black);
-  border: 0.2vmin solid var(--tan-3);
+  border: 0.2vmin solid var(--black);
   border-radius: 1vmin;
   font-size: 2vmin;
   cursor: pointer;
@@ -1598,15 +1604,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.SbDKL2bctOyC5ZgA0KfW {
 }
 
 .SbDKL2bctOyC5ZgA0KfW.mOA_Z5p05rn7VW_2oU68 {
-  border-color: var(--black);
+  border-color: var(--tan-3);
   border-width: 0.2vmin;
   cursor: default;
 }
 
 .SbDKL2bctOyC5ZgA0KfW:not(.mOA_Z5p05rn7VW_2oU68):hover {
-  border-color: var(--black);
+  border-color: var(--text-light);
   border-width: 0.2vmin;
-}`, "",{"version":3,"sources":["webpack://./src/components/OrderListItem/OrderListItem.module.scss"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,oBAAA;EACA,cAAA;EACA,wBAAA;EACA,8BAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,eAAA;AACJ;;AAEI;EACA,sBAAA;AACJ;;AAEI;EACA,0BAAA;EACA,qBAAA;EACA,eAAA;AACJ;;AAEI;EACA,0BAAA;EACA,qBAAA;AACJ","sourcesContent":[".OrderListItem {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 3vmin;\n    padding: 2vmin;\n    color: var(--text-light);\n    background-color: var(--black);\n    border: .2vmin solid var(--tan-3);\n    border-radius: 1vmin;\n    font-size: 2vmin;\n    cursor: pointer;\n    }\n    \n    .OrderListItem > div> div:first-child {\n    margin-bottom: .5vmin;\n    }\n    \n    .OrderListItem.selected {\n    border-color: var(--black);\n    border-width: .2vmin;\n    cursor: default;\n    }\n    \n    .OrderListItem:not(.selected):hover {\n    border-color: var(--black);\n    border-width: .2vmin;\n    }"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/OrderListItem/OrderListItem.module.scss"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,oBAAA;EACA,cAAA;EACA,mBAAA;EACA,8BAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,eAAA;AACJ;;AAEA;EACI,sBAAA;AACJ;;AAEA;EACI,0BAAA;EACA,qBAAA;EACA,eAAA;AACJ;;AAEA;EACI,+BAAA;EACA,qBAAA;AACJ","sourcesContent":[".OrderListItem {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 3vmin;\n    padding: 2vmin;\n    color: var(--tan-3);\n    background-color: var(--black);\n    border: .2vmin solid var(--black);\n    border-radius: 1vmin;\n    font-size: 2vmin;\n    cursor: pointer;\n}\n\n.OrderListItem>div>div:first-child {\n    margin-bottom: .5vmin;\n}\n\n.OrderListItem.selected {\n    border-color: var(--tan-3);\n    border-width: .2vmin;\n    cursor: default;\n}\n\n.OrderListItem:not(.selected):hover {\n    border-color: var(--text-light);\n    border-width: .2vmin;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"OrderListItem": `SbDKL2bctOyC5ZgA0KfW`,
@@ -1719,8 +1725,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.zoHqXn3WE8EDtN1a0D86 {
   text-align: center;
   color: var(--tan-3);
   background-color: var(--blood-red);
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 2vmin;
+  border: 0.4vmin ridge var(--blood-red);
+  border-radius: 1vmin;
   margin-left: 30vw;
   margin-right: 30vw;
   padding-left: 2vmin;
@@ -1770,7 +1776,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.zoHqXn3WE8EDtN1a0D86 {
 
 .GneQgjlnBwxxTh73S92J h3:hover {
   background-color: #860814;
-}`, "",{"version":3,"sources":["webpack://./src/pages/AuthPage/AuthPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AACJ;AACI;EACI,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,eAAA;AACR;;AAGA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AAAJ;AAEI;EACI,aAAA;EACA,8BAAA;EACA,aAAA;EACA,iBAAA;AAAR;AAGI;EACI,aAAA;AADR;AAII;EACI,aAAA;EACA,qBAAA;EACA,kBAAA;AAFR;;AAMA;EACI,kBAAA;EACA,mBAAA;EACA,6BAAA;EACA,kCAAA;EACA,sBAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,sBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,yBAAA;AAHJ","sourcesContent":[".home {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    align-items: center;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .enter {\n        font-size: 1.75em;\n        text-align: center;\n        color: var(--tan-3);\n        background-color: var(--blood-red);\n        border: .1vmin solid var(--tan-3);\n        border-radius: 2vmin;\n        margin-left: 30vw;\n        margin-right: 30vw;\n        padding-left: 2vmin;\n        padding-right: 2vmin;\n        cursor: pointer;\n    }\n}\n\n.AuthPage {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-items: flex-start;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .container {\n        display: flex;\n        justify-content: space-between;\n        width: 95vmax;\n        margin-top: 3vmin;\n    }\n\n    .buttons {\n        display: flex;\n    }\n\n    .form {\n        display: flex;\n        align-content: center;\n        margin-top: 20vmin;\n    }\n}\n\n.AuthPage h3 {\n    text-align: center;\n    color: var(--tan-3);\n    background-color: var(--plum);\n    border: .1vmin solid var(--tan-3);\n    border-radius: .5vmin;\n    margin-top: -.1vmin;\n    margin-left: 2vmin;\n    padding-left: 1vmin;\n    padding-right: 1vmin;\n    margin-bottom: 7.5vmin;\n    cursor: pointer;\n}\n\n.Authpage h3:hover {\n    background-color: #860814;\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/pages/AuthPage/AuthPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,qBAAA;EACA,uBAAA;EACA,mBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AACJ;AACI;EACI,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,kCAAA;EACA,sCAAA;EACA,oBAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,eAAA;AACR;;AAGA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,+FAAA;EACA,4BAAA;EACA,sBAAA;EACA,oBAAA;AAAJ;AAEI;EACI,aAAA;EACA,8BAAA;EACA,aAAA;EACA,iBAAA;AAAR;AAGI;EACI,aAAA;AADR;AAII;EACI,aAAA;EACA,qBAAA;EACA,kBAAA;AAFR;;AAMA;EACI,kBAAA;EACA,mBAAA;EACA,6BAAA;EACA,kCAAA;EACA,sBAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,sBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,yBAAA;AAHJ","sourcesContent":[".home {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    align-items: center;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .enter {\n        font-size: 1.75em;\n        text-align: center;\n        color: var(--tan-3);\n        background-color: var(--blood-red);\n        border: .4vmin ridge var(--blood-red);\n        border-radius: 1vmin;\n        margin-left: 30vw;\n        margin-right: 30vw;\n        padding-left: 2vmin;\n        padding-right: 2vmin;\n        cursor: pointer;\n    }\n}\n\n.AuthPage {\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-items: flex-start;\n    background-image: url(\"https://cdn.pixabay.com/photo/2017/04/10/05/53/potion-2217630_1280.jpg\");\n    background-repeat: no-repeat;\n    background-size: cover;\n    border-radius: 2vmin;\n\n    .container {\n        display: flex;\n        justify-content: space-between;\n        width: 95vmax;\n        margin-top: 3vmin;\n    }\n\n    .buttons {\n        display: flex;\n    }\n\n    .form {\n        display: flex;\n        align-content: center;\n        margin-top: 20vmin;\n    }\n}\n\n.AuthPage h3 {\n    text-align: center;\n    color: var(--tan-3);\n    background-color: var(--plum);\n    border: .1vmin solid var(--tan-3);\n    border-radius: .5vmin;\n    margin-top: -.1vmin;\n    margin-left: 2vmin;\n    padding-left: 1vmin;\n    padding-right: 1vmin;\n    margin-bottom: 7.5vmin;\n    cursor: pointer;\n}\n\n.Authpage h3:hover {\n    background-color: #860814;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"home": `zoHqXn3WE8EDtN1a0D86`,
@@ -1871,6 +1877,226 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.U7F51i6q23MB43wS4GeC {
 ___CSS_LOADER_EXPORT___.locals = {
 	"OrderHistoryPage": `U7F51i6q23MB43wS4GeC`,
 	"aside": `Gl976TgPIRmY9_yeWoZA`
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/scss/styles.scss":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/scss/styles.scss ***!
+  \*********************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/* CSS Custom Properties */
+:root {
+  --white: #FFFFFF;
+  --dark-gray: #5f5f5fb1;
+  --tan-2: #E7E2DD;
+  --tan-3: #E2D9D1;
+  --plum: #84628c;
+  --black: #000000;
+  --blood-red: #860814;
+  --text-light: #968c84;
+  --text-dark: #615954;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif; */
+  font-family: "Eater", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--plum);
+  padding: 2vmin;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+#tjWEEomjEYxLvWlDEOE3 {
+  height: 100%;
+}
+
+._1C57Wc3sAVu9HWaZFmf {
+  text-align: center;
+}
+
+.ry3kmGBkCGXGayyVQlZP {
+  text-align: right;
+}
+
+.ZROalUKmcjoGBlYovkLT {
+  font-size: smaller;
+}
+
+.ui7ihTZq_fc5KE3r6zCv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.DIVnKVY_Wk8qFq1waHSB {
+  flex-direction: column;
+}
+
+.aleXoKHG8lCji49tYLyF {
+  justify-content: flex-end;
+}
+
+.AAcPtgzZXTNs7jivuSre {
+  overflow-y: scroll;
+}
+
+.OoRoUIaoCjHsXBK7EChZ {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--dark-gray);
+  color: var(--text-dark);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  padding: 0.6vmin;
+  text-align: center;
+  font-size: 2vmin;
+}
+
+.MMHxHyV5UppwvI7obxXL {
+  padding: 3vmin;
+  background-color: var(--dark-gray);
+  border: 0.1vmin solid var(--black);
+  border-radius: 1vmin;
+  box-shadow: 5px 5px 5px var(--black);
+}
+
+p.fgWR5Asb2guMuboowfoa {
+  /* background-color: var(--blood-red); */
+  color: var(--tan-3);
+  text-align: center;
+  /* visibility: hidden; */
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1.25vmin;
+  color: var(--tan-3);
+}
+
+label {
+  font-size: 2vmin;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 0.5vmin;
+  color: var(--text-dark);
+  background-image: none !important;
+  /* prevent lastpass */
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--dark-gray);
+}
+
+button,
+a.vv25IKDRix2smYD5QAfA {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: var(--tan-3);
+  background-color: var(--plum);
+  font-family: "Eater", cursive;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 0.5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover,
+a.vv25IKDRix2smYD5QAfA:hover {
+  background-color: var(--blood-red);
+}
+
+button.cKWmEOlqvMl9hXHCpruw {
+  font-size: 1.2vmin;
+  padding: 0.5vmin 0 0.5vmin 0;
+  margin: 0 5vmin 0 5vmin;
+}
+
+button.M8zx7cyqKmyCcrjJaXjj {
+  font-size: 1.5vmin;
+  padding: 0.6vmin 0.8vmin;
+}
+
+button.mmcnNCjhUQqEoaSf8Yur {
+  font-size: 1vmin;
+  padding: 0.4vmin 0.5vmin;
+}
+
+button:disabled,
+form:invalid button[type=submit] {
+  cursor: not-allowed;
+  background-color: var(--plum);
+  font-family: "Eater", cursive;
+  margin-left: 17vmin;
+  margin-right: 17vmin;
+  padding: 0.5vmin;
+}
+
+button[type=submit] {
+  grid-column: span 2;
+  margin: 1vmin 0 0;
+}`, "",{"version":3,"sources":["webpack://./src/scss/styles.scss"],"names":[],"mappings":"AAAA,0BAAA;AACA;EACE,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,qBAAA;EACA,oBAAA;AACF;;AAEA;;;EAGE,sBAAA;AACF;;AAEA;EACE,SAAA;EACA;;mBAAA;EAGA,6BAAA;EACA,mCAAA;EACA,kCAAA;EACA,6BAAA;EACA,cAAA;EACA,aAAA;AACF;;AAEA;EACE,+EAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,iBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,sBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,kCAAA;EACA,uBAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,kBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,cAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,oCAAA;AAAF;;AAGA;EACE,wCAAA;EACA,mBAAA;EACA,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,cAAA;EACA,gBAAA;EACA,kCAAA;EACA,sBAAA;EACA,uBAAA;EACA,iCAAA;EACA,qBAAA;EACA,aAAA;AAAF;;AAGA;EACE,8BAAA;AAAF;;AAGA;;EAEE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kCAAA;EACA,sBAAA;EACA,aAAA;EACA,eAAA;AAAF;;AAGA;;EAEE,kCAAA;AAAF;;AAGA;EACE,kBAAA;EACA,4BAAA;EACA,uBAAA;AAAF;;AAGA;EACE,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,wBAAA;AAAF;;AAGA;;EAEE,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,mBAAA;EACA,iBAAA;AAAF","sourcesContent":["/* CSS Custom Properties */\n:root {\n  --white: #FFFFFF;\n  --dark-gray: #5f5f5fb1;\n  --tan-2: #E7E2DD;\n  --tan-3: #E2D9D1;\n  --plum: #84628c;\n  --black: #000000;\n  --blood-red: #860814;\n  --text-light: #968c84;\n  --text-dark: #615954;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n      sans-serif; */\n  font-family: 'Eater', cursive;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: var(--plum);\n  padding: 2vmin;\n  height: 100vh;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n\n#root {\n  height: 100%;\n}\n\n.align-ctr {\n  text-align: center;\n}\n\n.align-rt {\n  text-align: right;\n}\n\n.smaller {\n  font-size: smaller;\n}\n\n.flex-ctr-ctr {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 15px;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.flex-j-end {\n  justify-content: flex-end;\n}\n\n.scroll-y {\n  overflow-y: scroll;\n}\n\n.section-heading {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: var(--dark-gray);\n  color: var(--text-dark);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  padding: .6vmin;\n  text-align: center;\n  font-size: 2vmin;\n}\n\n.form-container {\n  padding: 3vmin;\n  background-color: var(--dark-gray);\n  border: .1vmin solid var(--black);\n  border-radius: 1vmin;\n  box-shadow: 5px 5px 5px var(--black);\n}\n\np.error-message {\n  /* background-color: var(--blood-red); */\n  color: var(--tan-3);\n  text-align: center;\n  /* visibility: hidden; */\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr 3fr;\n  gap: 1.25vmin;\n  color: var(--tan-3);\n}\n\nlabel {\n  font-size: 2vmin;\n  display: flex;\n  align-items: center;\n}\n\ninput {\n  padding: 1vmin;\n  font-size: 2vmin;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  color: var(--text-dark);\n  background-image: none !important;\n  /* prevent lastpass */\n  outline: none;\n}\n\ninput:focus {\n  border-color: var(--dark-gray);\n}\n\nbutton,\na.button {\n  margin: 1vmin;\n  padding: 1vmin;\n  color: var(--tan-3);\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  font-size: 2vmin;\n  font-weight: bold;\n  text-decoration: none;\n  text-align: center;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  outline: none;\n  cursor: pointer;\n}\n\nbutton:hover,\na.button:hover {\n  background-color: var(--blood-red);\n}\n\nbutton.btn-m {\n  font-size: 1.2vmin;\n  padding: .5vmin 0 .5vmin 0;\n  margin: 0 5vmin 0 5vmin;\n}\n\nbutton.btn-sm {\n  font-size: 1.5vmin;\n  padding: .6vmin .8vmin;\n}\n\nbutton.btn-xs {\n  font-size: 1vmin;\n  padding: .4vmin .5vmin;\n}\n\nbutton:disabled,\nform:invalid button[type=\"submit\"] {\n  cursor: not-allowed;\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}\n\nbutton[type=\"submit\"] {\n  grid-column: span 2;\n  margin: 1vmin 0 0;\n}"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"root": `tjWEEomjEYxLvWlDEOE3`,
+	"align-ctr": `_1C57Wc3sAVu9HWaZFmf`,
+	"align-rt": `ry3kmGBkCGXGayyVQlZP`,
+	"smaller": `ZROalUKmcjoGBlYovkLT`,
+	"flex-ctr-ctr": `ui7ihTZq_fc5KE3r6zCv`,
+	"flex-col": `DIVnKVY_Wk8qFq1waHSB`,
+	"flex-j-end": `aleXoKHG8lCji49tYLyF`,
+	"scroll-y": `AAcPtgzZXTNs7jivuSre`,
+	"section-heading": `OoRoUIaoCjHsXBK7EChZ`,
+	"form-container": `MMHxHyV5UppwvI7obxXL`,
+	"error-message": `fgWR5Asb2guMuboowfoa`,
+	"button": `vv25IKDRix2smYD5QAfA`,
+	"btn-m": `cKWmEOlqvMl9hXHCpruw`,
+	"btn-sm": `M8zx7cyqKmyCcrjJaXjj`,
+	"btn-xs": `mmcnNCjhUQqEoaSf8Yur`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2617,6 +2843,56 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_OrderHistoryPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_OrderHistoryPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_OrderHistoryPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
+/***/ }),
+
+/***/ "./src/scss/styles.scss":
+/*!******************************!*\
+  !*** ./src/scss/styles.scss ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_styles_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!../../node_modules/sass-loader/dist/cjs.js!../../node_modules/postcss-loader/dist/cjs.js!./styles.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/scss/styles.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_styles_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_styles_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_styles_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_styles_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
 /***/ })
 
 /******/ 	});
@@ -2790,4 +3066,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.e51bdd8f0f7e7308cbea034f6da58ec9.js.map
+//# sourceMappingURL=App.c04252dfa687401294427117b9533bfd.js.map

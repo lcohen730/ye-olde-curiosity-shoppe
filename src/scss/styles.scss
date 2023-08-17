@@ -86,13 +86,16 @@ code {
 .form-container {
   padding: 3vmin;
   background-color: var(--dark-gray);
-  border: .1vmin solid var(--tan-3);
+  border: .1vmin solid var(--black);
   border-radius: 1vmin;
+  box-shadow: 5px 5px 5px var(--black);
 }
 
 p.error-message {
-  color: var(--blood-red);
+  /* background-color: var(--blood-red); */
+  color: var(--tan-3);
   text-align: center;
+  /* visibility: hidden; */
 }
 
 form {
@@ -164,7 +167,7 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  // background-color: var(--plum);
+  background-color: var(--plum);
   font-family: 'Eater', cursive;
   margin-left: 17vmin;
   margin-right: 17vmin;

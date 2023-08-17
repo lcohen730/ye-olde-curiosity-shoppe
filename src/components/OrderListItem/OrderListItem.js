@@ -5,7 +5,7 @@ return (
   <div className={`${styles.OrderListItem} ${isSelected ? styles.selected : ''}`} onClick={() => handleSelectOrder(order)}>
     <div>
       <div>Order Id: <span className="smaller">{order.orderId}</span></div>
-      <div className="smaller">{new Date(order.updatedAt).toLocaleDateString()}</div>
+      <div className="smaller">{new Date(order.updatedAt).toLocaleDateString('en-US')}</div>
     </div>
     <div className="align-rt">
       <div>${order.orderTotal.toFixed(2)}</div>

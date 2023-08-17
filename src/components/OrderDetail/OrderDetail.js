@@ -23,7 +23,7 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout }) 
             <span>YOUR CART</span>
           }
           {/* <span>{new Date(order.updatedAt).toLocaleDateString()}</span> */}
-          {order.isPaid ? <span>{new Date(order.updatedAt).toLocaleDateString()}</span> : null}
+          {order.isPaid ? <span>{new Date(order.updatedAt).toLocaleDateString('en-US')}</span> : null}
         </div>
         <div className={`${styles.lineItemContainer} flex-ctr-ctr flex-col scroll-y`}>
           {lineItems.length ?

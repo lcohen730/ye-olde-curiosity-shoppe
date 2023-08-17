@@ -5,25 +5,25 @@
     align-items: center;
     margin-bottom: 3vmin;
     padding: 2vmin;
-    color: var(--text-light);
+    color: var(--tan-3);
     background-color: var(--black);
-    border: .2vmin solid var(--tan-3);
+    border: .2vmin solid var(--black);
     border-radius: 1vmin;
     font-size: 2vmin;
     cursor: pointer;
-    }
-    
-    .OrderListItem > div> div:first-child {
+}
+
+.OrderListItem>div>div:first-child {
     margin-bottom: .5vmin;
-    }
-    
-    .OrderListItem.selected {
-    border-color: var(--black);
+}
+
+.OrderListItem.selected {
+    border-color: var(--tan-3);
     border-width: .2vmin;
     cursor: default;
-    }
-    
-    .OrderListItem:not(.selected):hover {
-    border-color: var(--black);
+}
+
+.OrderListItem:not(.selected):hover {
+    border-color: var(--text-light);
     border-width: .2vmin;
-    }
+}
