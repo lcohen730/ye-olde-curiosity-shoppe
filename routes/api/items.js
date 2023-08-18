@@ -4,7 +4,7 @@ const itemsCtrl = require('../../controllers/api/items');
 
 // GET /api/items
 router.get('/', itemsCtrl.index);
-// POST /api/items/addcomment
+// POST /api/items/:id/addcomment
 router.post('/:id/addcomment', itemsCtrl.addComment);
 // GET /api/items/:id
 router.get('/:id', itemsCtrl.show);

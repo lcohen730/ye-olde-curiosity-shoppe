@@ -496,7 +496,17 @@ function MenuListItem(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].info
   }, /*#__PURE__*/React.createElement("span", null, "Description: ", menuItem.info)), /*#__PURE__*/React.createElement("div", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentsContainer
+  }, /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].comments
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentsTitle
+  }, "Comments: ", Array.isArray(menuItem.comments) ? menuItem.comments.map(comment => {
+    return /*#__PURE__*/React.createElement("li", {
+      className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].comment
+    }, comment.content);
+  }) : '')), /*#__PURE__*/React.createElement("div", {
+    classname: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].submitComment
   }, /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmitComment
   }, /*#__PURE__*/React.createElement("input", {
@@ -507,10 +517,10 @@ function MenuListItem(_ref) {
   }), /*#__PURE__*/React.createElement("input", {
     type: "submit",
     value: "ADD COMMENT"
-  })), /*#__PURE__*/React.createElement("ul", null, "Comments: ", Array.isArray(menuItem.comments) ? menuItem.comments.map(comment => {
-    return /*#__PURE__*/React.createElement("li", null, comment.content);
-  }) : '')))) : /*#__PURE__*/React.createElement("div", {
+  })))))) : /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].MenuListItem
+  }, /*#__PURE__*/React.createElement("div", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].mainItem
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].emoji,
     src: menuItem.image
@@ -524,7 +534,7 @@ function MenuListItem(_ref) {
     onClick: () => handleAddToOrder(menuItem._id)
   }, "ADD"), /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].rating
-  }, filledStars, emptyStars))));
+  }, filledStars, emptyStars)))));
 }
 
 /***/ }),
@@ -3404,4 +3414,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.175ebfca1a10a3a8ac285fad9fd899f7.js.map
+//# sourceMappingURL=App.4e79abdfda06803e8fa5e21f20609d44.js.map

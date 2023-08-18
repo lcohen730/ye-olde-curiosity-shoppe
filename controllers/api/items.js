@@ -33,9 +33,9 @@ async function addComment(req, res) {
     const item = await Item.findById(req.params.id);
     const comment = await Comment.create({
       item: item._id,
-    user: req.user._id,
-    rating: 5,
-    content: req.body.content
+      user: req.user._id,
+      rating: 5,
+      content: req.body.content
     })
     item.comments.addToSet({ _id: comment._id })
     item.save()
