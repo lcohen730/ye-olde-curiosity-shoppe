@@ -6,6 +6,7 @@ const path = require('path'); */
 const Category = require('../models/category');
 const Item = require('../models/item');
 /* const Image = require('../models/image'); */
+const Comment = require('../models/comment');
 
 (async function() {
 
@@ -16,6 +17,12 @@ const Item = require('../models/item');
     {name: 'Clothing', sortOrder: 30},
     {name: 'Accessories', sortOrder: 40},
     {name: 'Books', sortOrder: 50},
+  ]);
+
+  await Comment.deleteMany({});
+  const comments = await Comment.create([
+    {rating: 5, content: 'Perfectly spooky'},
+    {rating: 3, content: 'Not spooky enough'},
   ]);
 
   /* const siameseFilePath = path.resolve('/Users/lauracohen/portfolio-projects/projects/unit-3-project/public/img/siamese-twins-skeleton.jpeg');
@@ -38,7 +45,10 @@ const Item = require('../models/item');
     {name: 'Hand of Glory', 
       image: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/93409448-d390-409f-b453-0fa35e42e8bd/dblvbj7-42a75a6f-386e-40d6-b2b8-35a301dbc7f9.jpg/v1/fill/w_774,h_1033,q_70,strp/hand_of_glory_by_gnarledgnome_dblvbj7-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTM2NiIsInBhdGgiOiJcL2ZcLzkzNDA5NDQ4LWQzOTAtNDA5Zi1iNDUzLTBmYTM1ZTQyZThiZFwvZGJsdmJqNy00MmE3NWE2Zi0zODZlLTQwZDYtYjJiOC0zNWEzMDFkYmM3ZjkuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2aVV2pSkM3A8CdoeqO50fTMUGelzWXASKmEE6dRxowQ', 
       category: categories[0], 
-      price: 299.99},
+      price: 299.99,
+      rating: 4,
+      info: 'This is an item',
+      comments: [ comments[0], comments[1] ]},
     {name: 'Monkey\'s Paw',
       image: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/2017/04/ovd.monkeypaw-2017-04-07-09-15.png?auto=format%2Ccompress&fit=max&q=70&w=1200', 
       category: categories[0], 

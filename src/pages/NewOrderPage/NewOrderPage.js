@@ -37,7 +37,7 @@ export default function NewOrderPage({ user, setUser }) {
   // results in the effect running after
   // the FIRST render only
 
-  /*-- Event Handlers --*/
+  /*-- Event Handlers --*/  
   async function handleAddToOrder(itemId) {
     const updatedCart = await ordersAPI.addItemToCart(itemId);
     setCart(updatedCart);
@@ -68,6 +68,7 @@ export default function NewOrderPage({ user, setUser }) {
       <MenuList
         menuItems={menuItems.filter(item => item.category.name === activeCat)}
         handleAddToOrder={handleAddToOrder}
+        setMenuItems={setMenuItems}
       />
       <OrderDetail
         order={cart}
