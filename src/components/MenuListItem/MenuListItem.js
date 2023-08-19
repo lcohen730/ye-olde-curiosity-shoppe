@@ -88,21 +88,30 @@ export default function MenuListItem({ menuItem, handleAddToOrder, setMenuItems,
           </div>
           <div className={styles.extraItem}>
             <div className={styles.info}>
-              <span>Description: {menuItem.info}</span>
+              <span>{menuItem.info}</span>
             </div>
             <div className={styles.commentsContainer}>
               <div className={styles.comments}>
                 <ul className={styles.commentsTitle}>Comments: {Array.isArray(menuItem.comments) ? menuItem.comments.map((comment) => {
+                  console.log(comment)
                   return (
-                    <li className={styles.comment}>{comment.content}</li>
+                    <li className={styles.comment}>
+                      <div className={styles.commentUser}>
+                        {comment.user.name} SAYS: <br />
+                      </div>
+                      <div className={styles.commentContent}>{comment.content}<br /></div>
+                      <div className={styles.commentDate}>
+                        {comment.date.toLocaleString('en-US')}
+                      </div>
+                    </li>
                   )
                 }) : ''}
                 </ul>
               </div>
-              <div classname={styles.submitComment}>
+              <div className={styles.submitComment}>
                 <form onSubmit={handleSubmitComment}>
-                  <input type='text' name='content' value={content} onChange={handleContent}></input>
-                  <input type='submit' value='ADD COMMENT'></input>
+                  <input className={styles.typeComment}type='text' name='content' value={content} onChange={handleContent}></input>
+                  <input className={styles.addCommentBtn} type='submit' value='ADD COMMENT'></input>
                 </form>
               </div>
             </div>

@@ -3,23 +3,29 @@
     list-style: none;
     padding: 0;
     font-size: 1.7vw;
-    }
-    
-    .CategoryList li {
+}
+
+.CategoryList li {
     padding: .6vmin;
     text-align: center;
     border-radius: .5vmin;
     margin-bottom: .5vmin;
+
+    .active {
+        color: var(--tan-3);
+        background-color: var(--blood-red);
+        border: .1vmin solid var(--tan-3);
     }
-    
-    .CategoryList li:hover:not(.active) {
+}
+
+.CategoryList li:hover:not(.active) {
     cursor: pointer;
     background-color: var(--black);
     color: var(--tan-3);
-    }
-    
-    .CategoryList li.active {
-    color: var(--text-dark);
-    background-color: var(--dark-gray);
+}
+
+.CategoryList li.active {
+    color: var(--tan-3);
+    background-color: var(--blood-red);
     border: .1vmin solid var(--tan-3);
-    }
+}

@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema({
     item: { type: mongoose.Schema.Types.ObjectId, ref: 'Item' },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    rating: { type: Number, required: true },
+    rating: Number,
     content: { type: String, required: true },
-    date: { type: Date, required: true, default: Date.now },
+    date: String,
 }, {
   timestamps: true
 });

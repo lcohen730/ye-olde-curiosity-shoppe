@@ -38,19 +38,12 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  rating: {
-    type: Number,
-    required: true
-  },
+  rating: Number,
   content: {
     type: String,
     required: true
   },
-  date: {
-    type: Date,
-    required: true,
-    default: Date.now
-  }
+  date: String
 }, {
   timestamps: true
 });
@@ -495,26 +488,35 @@ function MenuListItem(_ref) {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].extraItem
   }, /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].info
-  }, /*#__PURE__*/React.createElement("span", null, "Description: ", menuItem.info)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, menuItem.info)), /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentsContainer
   }, /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].comments
   }, /*#__PURE__*/React.createElement("ul", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentsTitle
   }, "Comments: ", Array.isArray(menuItem.comments) ? menuItem.comments.map(comment => {
+    console.log(comment);
     return /*#__PURE__*/React.createElement("li", {
       className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].comment
-    }, comment.content);
+    }, /*#__PURE__*/React.createElement("div", {
+      className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentUser
+    }, comment.user.name, " SAYS: ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+      className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentContent
+    }, comment.content, /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+      className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentDate
+    }, comment.date.toLocaleString('en-US')));
   }) : '')), /*#__PURE__*/React.createElement("div", {
-    classname: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].submitComment
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].submitComment
   }, /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmitComment
   }, /*#__PURE__*/React.createElement("input", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].typeComment,
     type: "text",
     name: "content",
     value: content,
     onChange: handleContent
   }), /*#__PURE__*/React.createElement("input", {
+    className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].addCommentBtn,
     type: "submit",
     value: "ADD COMMENT"
   })))))) : /*#__PURE__*/React.createElement("div", {
@@ -1037,6 +1039,7 @@ function NewOrderPage(_ref) {
         }, []);
         setMenuItems(items);
         setActiveCat(categoriesRef.current[0]);
+        console.log(activeCat);
       });
       return _getItems.apply(this, arguments);
     }
@@ -1451,6 +1454,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.l8hJyaPvo9smd6LiNqWK {
   border-radius: 0.5vmin;
   margin-bottom: 0.5vmin;
 }
+.l8hJyaPvo9smd6LiNqWK li ._scckhAN2KPE1u73kR14 {
+  color: var(--tan-3);
+  background-color: var(--blood-red);
+  border: 0.1vmin solid var(--tan-3);
+}
 
 .l8hJyaPvo9smd6LiNqWK li:hover:not(._scckhAN2KPE1u73kR14) {
   cursor: pointer;
@@ -1459,10 +1467,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.l8hJyaPvo9smd6LiNqWK {
 }
 
 .l8hJyaPvo9smd6LiNqWK li._scckhAN2KPE1u73kR14 {
-  color: var(--text-dark);
-  background-color: var(--dark-gray);
+  color: var(--tan-3);
+  background-color: var(--blood-red);
   border: 0.1vmin solid var(--tan-3);
-}`, "",{"version":3,"sources":["webpack://./src/components/CategoryList/CategoryList.module.scss"],"names":[],"mappings":"AAAA;EACI,wBAAA;EACA,gBAAA;EACA,UAAA;EACA,gBAAA;AACJ;;AAEI;EACA,gBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;AACJ;;AAEI;EACA,eAAA;EACA,8BAAA;EACA,mBAAA;AACJ;;AAEI;EACA,uBAAA;EACA,kCAAA;EACA,kCAAA;AACJ","sourcesContent":[".CategoryList {\n    color: var(--text-light);\n    list-style: none;\n    padding: 0;\n    font-size: 1.7vw;\n    }\n    \n    .CategoryList li {\n    padding: .6vmin;\n    text-align: center;\n    border-radius: .5vmin;\n    margin-bottom: .5vmin;\n    }\n    \n    .CategoryList li:hover:not(.active) {\n    cursor: pointer;\n    background-color: var(--black);\n    color: var(--tan-3);\n    }\n    \n    .CategoryList li.active {\n    color: var(--text-dark);\n    background-color: var(--dark-gray);\n    border: .1vmin solid var(--tan-3);\n    }"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/CategoryList/CategoryList.module.scss"],"names":[],"mappings":"AAAA;EACI,wBAAA;EACA,gBAAA;EACA,UAAA;EACA,gBAAA;AACJ;;AAEA;EACI,gBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;AACJ;AACI;EACI,mBAAA;EACA,kCAAA;EACA,kCAAA;AACR;;AAGA;EACI,eAAA;EACA,8BAAA;EACA,mBAAA;AAAJ;;AAGA;EACI,mBAAA;EACA,kCAAA;EACA,kCAAA;AAAJ","sourcesContent":[".CategoryList {\n    color: var(--text-light);\n    list-style: none;\n    padding: 0;\n    font-size: 1.7vw;\n}\n\n.CategoryList li {\n    padding: .6vmin;\n    text-align: center;\n    border-radius: .5vmin;\n    margin-bottom: .5vmin;\n\n    .active {\n        color: var(--tan-3);\n        background-color: var(--blood-red);\n        border: .1vmin solid var(--tan-3);\n    }\n}\n\n.CategoryList li:hover:not(.active) {\n    cursor: pointer;\n    background-color: var(--black);\n    color: var(--tan-3);\n}\n\n.CategoryList li.active {\n    color: var(--tan-3);\n    background-color: var(--blood-red);\n    border: .1vmin solid var(--tan-3);\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"CategoryList": `l8hJyaPvo9smd6LiNqWK`,
@@ -1710,6 +1718,61 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.X4tFBfG4MKknHvd01CKE {
   font-size: 2vmin;
   color: var(--text-light);
 }
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .iu1byFQ3KEJx5e_Gudwl {
+  margin: 1vmin;
+  margin-bottom: 2vmin;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV {
+  background-color: rgb(58, 58, 58);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  margin: 1vmin;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .zSXyacLeMy2uFBZIKa9S {
+  list-style-type: none;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .zSXyacLeMy2uFBZIKa9S .PB8K7i0nKFRVMYqvyrQE {
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  margin: 1vmin;
+  margin-right: 5vmin;
+  background-color: var(--dark-gray);
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .zSXyacLeMy2uFBZIKa9S .PB8K7i0nKFRVMYqvyrQE .pB01y7_72Qw4RI96afRD, .X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .zSXyacLeMy2uFBZIKa9S .PB8K7i0nKFRVMYqvyrQE .nlUnGE2cnRFYRDstIs_Q {
+  margin: 1vmin;
+  font-size: 1.5vmin;
+  color: var(--tan-3);
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .zSXyacLeMy2uFBZIKa9S .PB8K7i0nKFRVMYqvyrQE .zxqrxoaYUT0UwqGO5Ri_ {
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  margin: 1vmin;
+  padding: 1vmin;
+  background-color: var(--text-light);
+  color: var(--black);
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .XnjTls0b0MdNRYfKCz7H {
+  margin: 5vmin;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .XnjTls0b0MdNRYfKCz7H .l7Re09wD60rYFzvfc8tZ {
+  background-color: var(--text-light);
+  border: 0.1vmin solid var(--tan-3);
+  color: var(--black);
+  width: 23.6vmax;
+  font-family: "Eater", cursive;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .XnjTls0b0MdNRYfKCz7H .HP_HVIJF1gGL4UzidpP7 {
+  background-color: var(--plum);
+  color: var(--tan-3);
+  font-family: "Eater", cursive;
+  border: 0.1vmin solid var(--tan-3);
+  width: 8vmax;
+  font-size: 2vmin;
+}
+.X4tFBfG4MKknHvd01CKE .D4243WDImYzAD3ZuHbQF .FiiOfAts4_Ar0DJrQ8PV .XnjTls0b0MdNRYfKCz7H .HP_HVIJF1gGL4UzidpP7:hover {
+  background-color: var(--blood-red);
+  cursor: pointer;
+}
 
 .X4tFBfG4MKknHvd01CKE .GqkE12RHPdZZg1360W4p {
   height: 8vw;
@@ -1744,12 +1807,22 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.X4tFBfG4MKknHvd01CKE {
   text-align: center;
   color: var(--tan-3);
   cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/components/MenuListItem/MenuListItem.module.scss"],"names":[],"mappings":"AAAA;EACE,WAAA;EACA,aAAA;EACA,sBAAA;EACA;wBAAA;EAEA,oBAAA;EACA,cAAA;EACA,mBAAA;EACA,8BAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;AACF;AACE;EACE,WAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,gBAAA;AACJ;AAEE;EACE,gBAAA;EACA,wBAAA;AAAJ;;AAIA;EACE,WAAA;EACA,UAAA;EACA,cAAA;EACA,mCAAA;EACA,kCAAA;EACA,oBAAA;AADF;;AAIA;EACE,aAAA;EACA,sBAAA;EACA,qBAAA;AADF;AAGE;EACE,iBAAA;EACA,qBAAA;AADJ;AAIE;EACE,gBAAA;AAFJ;;AAMA;EACE,gBAAA;EACA,kBAAA;EACA,wBAAA;AAHF;;AAMA;EACE,cAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;AAHF","sourcesContent":[".MenuListItem {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  /* justify-content: space-between;\n  align-items: center; */\n  margin-bottom: 3vmin;\n  padding: 2vmin;\n  color: var(--tan-3);\n  background-color: var(--black);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  font-size: 4vmin;\n\n  .mainItem {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 4vmin;\n  }\n\n  .extraItem {\n    font-size: 2vmin;\n    color: var(--text-light)\n  }\n}\n\n.MenuListItem .emoji {\n  height: 8vw;\n  width: 8vw;\n  font-size: 4vw;\n  background-color: var(--text-light);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n}\n\n.MenuListItem .buy {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n\n  button {\n    margin-top: 2vmin;\n    margin-bottom: -1vmin;\n  }\n\n  .rating span {\n    font-size: 2vmin;\n  }\n}\n\n.MenuListItem .buy span {\n  font-size: 1.7vw;\n  text-align: center;\n  color: var(--text-light);\n}\n\n.MenuListItem .name {\n  font-size: 2vw;\n  text-align: center;\n  color: var(--tan-3);\n  cursor: pointer;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/MenuListItem/MenuListItem.module.scss"],"names":[],"mappings":"AAAA;EACE,WAAA;EACA,aAAA;EACA,sBAAA;EACA;wBAAA;EAEA,oBAAA;EACA,cAAA;EACA,mBAAA;EACA,8BAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;AACF;AACE;EACE,WAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,gBAAA;AACJ;AAEE;EACE,gBAAA;EACA,wBAAA;AAAJ;AAEI;EACE,aAAA;EACA,oBAAA;AAAN;AAGI;EACE,iCAAA;EACA,kCAAA;EACA,oBAAA;EACA,aAAA;AADN;AAGM;EACE,qBAAA;AADR;AAGQ;EACE,kCAAA;EACA,oBAAA;EACA,aAAA;EACA,mBAAA;EACA,kCAAA;AADV;AAGU;EACE,aAAA;EACA,kBAAA;EACA,mBAAA;AADZ;AAIU;EACE,kCAAA;EACA,oBAAA;EACA,aAAA;EACA,cAAA;EACA,mCAAA;EACA,mBAAA;AAFZ;AAOM;EACE,aAAA;AALR;AAOQ;EACE,mCAAA;EACA,kCAAA;EACA,mBAAA;EACA,eAAA;EACA,6BAAA;AALV;AAQQ;EACE,6BAAA;EACA,mBAAA;EACA,6BAAA;EACA,kCAAA;EACA,YAAA;EACA,gBAAA;AANV;AASQ;EACE,kCAAA;EACA,eAAA;AAPV;;AAcA;EACE,WAAA;EACA,UAAA;EACA,cAAA;EACA,mCAAA;EACA,kCAAA;EACA,oBAAA;AAXF;;AAcA;EACE,aAAA;EACA,sBAAA;EACA,qBAAA;AAXF;AAaE;EACE,iBAAA;EACA,qBAAA;AAXJ;AAcE;EACE,gBAAA;AAZJ;;AAgBA;EACE,gBAAA;EACA,kBAAA;EACA,wBAAA;AAbF;;AAgBA;EACE,cAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;AAbF","sourcesContent":[".MenuListItem {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  /* justify-content: space-between;\n  align-items: center; */\n  margin-bottom: 3vmin;\n  padding: 2vmin;\n  color: var(--tan-3);\n  background-color: var(--black);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  font-size: 4vmin;\n\n  .mainItem {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 4vmin;\n  }\n\n  .extraItem {\n    font-size: 2vmin;\n    color: var(--text-light);\n\n    .info {\n      margin: 1vmin;\n      margin-bottom: 2vmin;\n    }\n\n    .commentsContainer {\n      background-color: rgb(58, 58, 58);\n      border: .1vmin solid var(--tan-3);\n      border-radius: 1vmin;\n      margin: 1vmin;\n\n      .commentsTitle {\n        list-style-type: none;\n\n        .comment {\n          border: .1vmin solid var(--tan-3);\n          border-radius: 1vmin;\n          margin: 1vmin;\n          margin-right: 5vmin;\n          background-color: var(--dark-gray);\n\n          .commentUser, .commentDate {\n            margin: 1vmin;\n            font-size: 1.5vmin;\n            color: var(--tan-3);\n          }\n\n          .commentContent {\n            border: .1vmin solid var(--tan-3);\n            border-radius: 1vmin;\n            margin: 1vmin;\n            padding: 1vmin;\n            background-color: var(--text-light);\n            color: var(--black);\n          }\n        }\n      }\n\n      .submitComment {\n        margin: 5vmin;\n\n        .typeComment {\n          background-color: var(--text-light);\n          border: .1vmin solid var(--tan-3);\n          color: var(--black);\n          width: 23.6vmax;\n          font-family: 'Eater', cursive;;\n        }\n\n        .addCommentBtn {\n          background-color: var(--plum);\n          color: var(--tan-3);\n          font-family: 'Eater', cursive;;\n          border: .1vmin solid var(--tan-3);\n          width: 8vmax;\n          font-size: 2vmin;\n        }\n\n        .addCommentBtn:hover {\n          background-color: var(--blood-red);\n          cursor: pointer;\n        }\n      }\n    }\n  }\n}\n\n.MenuListItem .emoji {\n  height: 8vw;\n  width: 8vw;\n  font-size: 4vw;\n  background-color: var(--text-light);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n}\n\n.MenuListItem .buy {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n\n  button {\n    margin-top: 2vmin;\n    margin-bottom: -1vmin;\n  }\n\n  .rating span {\n    font-size: 2vmin;\n  }\n}\n\n.MenuListItem .buy span {\n  font-size: 1.7vw;\n  text-align: center;\n  color: var(--text-light);\n}\n\n.MenuListItem .name {\n  font-size: 2vw;\n  text-align: center;\n  color: var(--tan-3);\n  cursor: pointer;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"MenuListItem": `X4tFBfG4MKknHvd01CKE`,
 	"mainItem": `yYpVSXyhjyCZWIyLYdk1`,
 	"extraItem": `D4243WDImYzAD3ZuHbQF`,
+	"info": `iu1byFQ3KEJx5e_Gudwl`,
+	"commentsContainer": `FiiOfAts4_Ar0DJrQ8PV`,
+	"commentsTitle": `zSXyacLeMy2uFBZIKa9S`,
+	"comment": `PB8K7i0nKFRVMYqvyrQE`,
+	"commentUser": `pB01y7_72Qw4RI96afRD`,
+	"commentDate": `nlUnGE2cnRFYRDstIs_Q`,
+	"commentContent": `zxqrxoaYUT0UwqGO5Ri_`,
+	"submitComment": `XnjTls0b0MdNRYfKCz7H`,
+	"typeComment": `l7Re09wD60rYFzvfc8tZ`,
+	"addCommentBtn": `HP_HVIJF1gGL4UzidpP7`,
 	"emoji": `GqkE12RHPdZZg1360W4p`,
 	"buy": `fO9kiPygtr0vmzsXoUxA`,
 	"rating": `JvawyYYDBxQIjHPsvofI`,
@@ -2366,7 +2439,7 @@ a.vv25IKDRix2smYD5QAfA {
   background-color: var(--plum);
   font-family: "Eater", cursive;
   font-size: 2vmin;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-decoration: none;
   text-align: center;
   border: 0.1vmin solid var(--tan-3);
@@ -2412,7 +2485,7 @@ button[type=submit] {
   margin-left: 17vmin;
   margin-right: 17vmin;
   padding: 0.5vmin;
-}`, "",{"version":3,"sources":["webpack://./src/scss/styles.scss"],"names":[],"mappings":"AAAA,0BAAA;AACA;EACE,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,qBAAA;EACA,oBAAA;AACF;;AAEA;;;EAGE,sBAAA;AACF;;AAEA;EACE,SAAA;EACA;;mBAAA;EAGA,6BAAA;EACA,mCAAA;EACA,kCAAA;EACA,6BAAA;EACA,cAAA;EACA,aAAA;AACF;;AAEA;EACE,+EAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,iBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,sBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,kCAAA;EACA,uBAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,kBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,cAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,oCAAA;AAAF;;AAGA;EACE,mBAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,cAAA;EACA,gBAAA;EACA,kCAAA;EACA,sBAAA;EACA,uBAAA;EACA,iCAAA;EACA,qBAAA;EACA,aAAA;AAAF;;AAGA;EACE,8BAAA;AAAF;;AAGA;;EAEE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kCAAA;EACA,sBAAA;EACA,aAAA;EACA,eAAA;AAAF;;AAGA;;EAEE,kCAAA;AAAF;;AAGA;EACE,kBAAA;EACA,4BAAA;EACA,uBAAA;AAAF;;AAGA;EACE,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,wBAAA;AAAF;;AAGA;;EAEE,mBAAA;EACA,kCAAA;EACA,6BAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,mBAAA;EACA,iBAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF","sourcesContent":["/* CSS Custom Properties */\n:root {\n  --white: #FFFFFF;\n  --dark-gray: #5f5f5fb1;\n  --tan-2: #E7E2DD;\n  --tan-3: #E2D9D1;\n  --plum: #84628c;\n  --black: #000000;\n  --blood-red: #860814;\n  --text-light: #968c84;\n  --text-dark: #615954;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n      sans-serif; */\n  font-family: 'Eater', cursive;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: var(--plum);\n  padding: 2vmin;\n  height: 100vh;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n\n#root {\n  height: 100%;\n}\n\n.align-ctr {\n  text-align: center;\n}\n\n.align-rt {\n  text-align: right;\n}\n\n.smaller {\n  font-size: smaller;\n}\n\n.flex-ctr-ctr {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 15px;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.flex-j-end {\n  justify-content: flex-end;\n}\n\n.scroll-y {\n  overflow-y: scroll;\n}\n\n.section-heading {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: var(--dark-gray);\n  color: var(--text-dark);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  padding: .6vmin;\n  text-align: center;\n  font-size: 2vmin;\n}\n\n.form-container {\n  padding: 3vmin;\n  background-color: var(--dark-gray);\n  border: .1vmin solid var(--black);\n  border-radius: 1vmin;\n  box-shadow: 5px 5px 5px var(--black);\n}\n\np.error-message {\n  color: var(--tan-3);\n  text-align: center;\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr 3fr;\n  gap: 1.25vmin;\n  color: var(--tan-3);\n}\n\nlabel {\n  font-size: 2vmin;\n  display: flex;\n  align-items: center;\n}\n\ninput {\n  padding: 1vmin;\n  font-size: 2vmin;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  color: var(--text-dark);\n  background-image: none !important;\n  /* prevent lastpass */\n  outline: none;\n}\n\ninput:focus {\n  border-color: var(--dark-gray);\n}\n\nbutton,\na.button {\n  margin: 1vmin;\n  padding: 1vmin;\n  color: var(--tan-3);\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  font-size: 2vmin;\n  font-weight: bold;\n  text-decoration: none;\n  text-align: center;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  outline: none;\n  cursor: pointer;\n}\n\nbutton:hover,\na.button:hover {\n  background-color: var(--blood-red);\n}\n\nbutton.btn-m {\n  font-size: 1.2vmin;\n  padding: .5vmin 0 .5vmin 0;\n  margin: 0 5vmin 0 5vmin;\n}\n\nbutton.btn-sm {\n  font-size: 1.5vmin;\n  padding: .6vmin .8vmin;\n}\n\nbutton.btn-xs {\n  font-size: 1vmin;\n  padding: .4vmin .5vmin;\n}\n\nbutton:disabled,\nform:invalid button[type=\"submit\"] {\n  cursor: not-allowed;\n  background-color: var(--blood-red);\n  font-family: 'Eater', cursive;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}\n\nbutton[type=\"submit\"] {\n  grid-column: span 2;\n  margin: 1vmin 0 0;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/scss/styles.scss"],"names":[],"mappings":"AAAA,0BAAA;AACA;EACE,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,qBAAA;EACA,oBAAA;AACF;;AAEA;;;EAGE,sBAAA;AACF;;AAEA;EACE,SAAA;EACA;;mBAAA;EAGA,6BAAA;EACA,mCAAA;EACA,kCAAA;EACA,6BAAA;EACA,cAAA;EACA,aAAA;AACF;;AAEA;EACE,+EAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,iBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,sBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,kCAAA;EACA,uBAAA;EACA,kCAAA;EACA,oBAAA;EACA,gBAAA;EACA,kBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,cAAA;EACA,kCAAA;EACA,kCAAA;EACA,oBAAA;EACA,oCAAA;AAAF;;AAGA;EACE,mBAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;AAAF;;AAGA;EACE,cAAA;EACA,gBAAA;EACA,kCAAA;EACA,sBAAA;EACA,uBAAA;EACA,iCAAA;EACA,qBAAA;EACA,aAAA;AAAF;;AAGA;EACE,8BAAA;AAAF;;AAGA;;EAEE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,6BAAA;EACA,6BAAA;EACA,gBAAA;EACA,uBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kCAAA;EACA,sBAAA;EACA,aAAA;EACA,eAAA;AAAF;;AAGA;;EAEE,kCAAA;AAAF;;AAGA;EACE,kBAAA;EACA,4BAAA;EACA,uBAAA;AAAF;;AAGA;EACE,kBAAA;EACA,wBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,wBAAA;AAAF;;AAGA;;EAEE,mBAAA;EACA,kCAAA;EACA,6BAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF;;AAGA;EACE,mBAAA;EACA,iBAAA;EACA,mBAAA;EACA,oBAAA;EACA,gBAAA;AAAF","sourcesContent":["/* CSS Custom Properties */\n:root {\n  --white: #FFFFFF;\n  --dark-gray: #5f5f5fb1;\n  --tan-2: #E7E2DD;\n  --tan-3: #E2D9D1;\n  --plum: #84628c;\n  --black: #000000;\n  --blood-red: #860814;\n  --text-light: #968c84;\n  --text-dark: #615954;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n      sans-serif; */\n  font-family: 'Eater', cursive;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: var(--plum);\n  padding: 2vmin;\n  height: 100vh;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n\n#root {\n  height: 100%;\n}\n\n.align-ctr {\n  text-align: center;\n}\n\n.align-rt {\n  text-align: right;\n}\n\n.smaller {\n  font-size: smaller;\n}\n\n.flex-ctr-ctr {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 15px;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.flex-j-end {\n  justify-content: flex-end;\n}\n\n.scroll-y {\n  overflow-y: scroll;\n}\n\n.section-heading {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: var(--dark-gray);\n  color: var(--text-dark);\n  border: .1vmin solid var(--tan-3);\n  border-radius: 1vmin;\n  padding: .6vmin;\n  text-align: center;\n  font-size: 2vmin;\n}\n\n.form-container {\n  padding: 3vmin;\n  background-color: var(--dark-gray);\n  border: .1vmin solid var(--black);\n  border-radius: 1vmin;\n  box-shadow: 5px 5px 5px var(--black);\n}\n\np.error-message {\n  color: var(--tan-3);\n  text-align: center;\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr 3fr;\n  gap: 1.25vmin;\n  color: var(--tan-3);\n}\n\nlabel {\n  font-size: 2vmin;\n  display: flex;\n  align-items: center;\n}\n\ninput {\n  padding: 1vmin;\n  font-size: 2vmin;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  color: var(--text-dark);\n  background-image: none !important;\n  /* prevent lastpass */\n  outline: none;\n}\n\ninput:focus {\n  border-color: var(--dark-gray);\n}\n\nbutton,\na.button {\n  margin: 1vmin;\n  padding: 1vmin;\n  color: var(--tan-3);\n  background-color: var(--plum);\n  font-family: 'Eater', cursive;\n  font-size: 2vmin;\n  /* font-weight: bold; */\n  text-decoration: none;\n  text-align: center;\n  border: .1vmin solid var(--tan-3);\n  border-radius: .5vmin;\n  outline: none;\n  cursor: pointer;\n}\n\nbutton:hover,\na.button:hover {\n  background-color: var(--blood-red);\n}\n\nbutton.btn-m {\n  font-size: 1.2vmin;\n  padding: .5vmin 0 .5vmin 0;\n  margin: 0 5vmin 0 5vmin;\n}\n\nbutton.btn-sm {\n  font-size: 1.5vmin;\n  padding: .6vmin .8vmin;\n}\n\nbutton.btn-xs {\n  font-size: 1vmin;\n  padding: .4vmin .5vmin;\n}\n\nbutton:disabled,\nform:invalid button[type=\"submit\"] {\n  cursor: not-allowed;\n  background-color: var(--blood-red);\n  font-family: 'Eater', cursive;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}\n\nbutton[type=\"submit\"] {\n  grid-column: span 2;\n  margin: 1vmin 0 0;\n  margin-left: 17vmin;\n  margin-right: 17vmin;\n  padding: .5vmin;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"root": `tjWEEomjEYxLvWlDEOE3`,
@@ -3414,4 +3487,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.4e79abdfda06803e8fa5e21f20609d44.js.map
+//# sourceMappingURL=App.64452965ae552215b779b1d88867eba7.js.map

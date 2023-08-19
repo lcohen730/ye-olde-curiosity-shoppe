@@ -22,7 +22,72 @@
 
   .extraItem {
     font-size: 2vmin;
-    color: var(--text-light)
+    color: var(--text-light);
+
+    .info {
+      margin: 1vmin;
+      margin-bottom: 2vmin;
+    }
+
+    .commentsContainer {
+      background-color: rgb(58, 58, 58);
+      border: .1vmin solid var(--tan-3);
+      border-radius: 1vmin;
+      margin: 1vmin;
+
+      .commentsTitle {
+        list-style-type: none;
+
+        .comment {
+          border: .1vmin solid var(--tan-3);
+          border-radius: 1vmin;
+          margin: 1vmin;
+          margin-right: 5vmin;
+          background-color: var(--dark-gray);
+
+          .commentUser, .commentDate {
+            margin: 1vmin;
+            font-size: 1.5vmin;
+            color: var(--tan-3);
+          }
+
+          .commentContent {
+            border: .1vmin solid var(--tan-3);
+            border-radius: 1vmin;
+            margin: 1vmin;
+            padding: 1vmin;
+            background-color: var(--text-light);
+            color: var(--black);
+          }
+        }
+      }
+
+      .submitComment {
+        margin: 5vmin;
+
+        .typeComment {
+          background-color: var(--text-light);
+          border: .1vmin solid var(--tan-3);
+          color: var(--black);
+          width: 23.6vmax;
+          font-family: 'Eater', cursive;;
+        }
+
+        .addCommentBtn {
+          background-color: var(--plum);
+          color: var(--tan-3);
+          font-family: 'Eater', cursive;;
+          border: .1vmin solid var(--tan-3);
+          width: 8vmax;
+          font-size: 2vmin;
+        }
+
+        .addCommentBtn:hover {
+          background-color: var(--blood-red);
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
