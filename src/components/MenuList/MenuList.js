@@ -1,7 +1,7 @@
 import styles from './MenuList.module.scss';
 import MenuListItem from '../MenuListItem/MenuListItem';
 
-export default function MenuList({ menuItems, handleAddToOrder, setMenuItems }) {
+export default function MenuList({ handleAddToOrder, setMenuItems, menuItems }) {
   const items = menuItems.map(item =>
     <MenuListItem
       key={item._id}

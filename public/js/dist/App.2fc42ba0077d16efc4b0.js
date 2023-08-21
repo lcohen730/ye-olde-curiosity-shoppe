@@ -193,7 +193,7 @@ function LineItem(_ref) {
     onClick: () => handleChangeQty(lineItem.item._id, lineItem.qty + 1)
   }, "+")), /*#__PURE__*/React.createElement("div", {
     className: _LineItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].extPrice
-  }, "$", lineItem.extPrice.toFixed(2)), /*#__PURE__*/React.createElement("button", {
+  }, "$", lineItem.extPrice.toFixed(2)), !isPaid && /*#__PURE__*/React.createElement("button", {
     className: "btn-m",
     onClick: () => handleChangeQty(lineItem.item._id, lineItem.qty = 0)
   }, "DELETE"));
@@ -341,9 +341,9 @@ function Logo(_ref) {
 
 function MenuList(_ref) {
   let {
-    menuItems,
     handleAddToOrder,
-    setMenuItems
+    setMenuItems,
+    menuItems
   } = _ref;
   const items = menuItems.map(item => /*#__PURE__*/React.createElement(_MenuListItem_MenuListItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: item._id,
@@ -396,18 +396,29 @@ function MenuListItem(_ref) {
   } = _ref;
   const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
   const [content, setContent] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('');
+  const [commentLive, setCommentLive] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    function getItems() {
+      return _getItems.apply(this, arguments);
+    }
+    function _getItems() {
+      _getItems = _asyncToGenerator(function* () {
+        const items = yield _utilities_items_api__WEBPACK_IMPORTED_MODULE_3__.getAll();
+        setMenuItems(items);
+      });
+      return _getItems.apply(this, arguments);
+    }
+    getItems();
+    setCommentLive(false);
+  }, [commentLive]);
   const handleOpen = () => {
     setOpen(!open);
   };
-  function handleOpenItem(_x) {
-    return _handleOpenItem.apply(this, arguments);
-  }
-  function _handleOpenItem() {
-    _handleOpenItem = _asyncToGenerator(function* (itemId) {
-      yield _utilities_items_api__WEBPACK_IMPORTED_MODULE_3__.getById();
-    });
-    return _handleOpenItem.apply(this, arguments);
-  }
+
+  /* async function handleOpenItem(itemId) {
+    await itemsAPI.getById()
+  } */
+
   const handleContent = evt => {
     setContent(evt.target.value);
   };
@@ -426,11 +437,13 @@ function MenuListItem(_ref) {
         });
         newMenuItems.splice(index, 1, newMenuItem);
         setMenuItems([...newMenuItems]);
+        setCommentLive(true);
+        console.log('Menu Items: ', menuItems);
       } catch (e) {
         console.error(e);
       }
     });
-    return function handleSubmitComment(_x2) {
+    return function handleSubmitComment(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -443,9 +456,9 @@ function MenuListItem(_ref) {
   ) */
 
   const filledArr = _models_itemSchema__WEBPACK_IMPORTED_MODULE_1___default().methods.getRating();
-  console.log(filledArr);
+  // console.log(filledArr)
   const emptyArr = _models_itemSchema__WEBPACK_IMPORTED_MODULE_1___default().methods.getRatingLeftover();
-  console.log(emptyArr);
+  // console.log(emptyArr)
   /* let filledStars = [...Array(filledArr)].map((_, i) => <span key={i}>★</span>);
   let emptyStars = [...Array(emptyArr)].map((_, i) => <span key={i}>☆</span>); */
   let filledStars = [...Array(4)].map((_, i) => /*#__PURE__*/React.createElement("span", {
@@ -495,7 +508,6 @@ function MenuListItem(_ref) {
   }, /*#__PURE__*/React.createElement("ul", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].commentsTitle
   }, "Comments: ", Array.isArray(menuItem.comments) ? menuItem.comments.map(comment => {
-    console.log(comment);
     return /*#__PURE__*/React.createElement("li", {
       className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].comment
     }, /*#__PURE__*/React.createElement("div", {
@@ -1039,7 +1051,6 @@ function NewOrderPage(_ref) {
         }, []);
         setMenuItems(items);
         setActiveCat(categoriesRef.current[0]);
-        console.log(activeCat);
       });
       return _getItems.apply(this, arguments);
     }
@@ -1209,9 +1220,9 @@ function OrderHistoryPage(_ref) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   addComment: () => (/* binding */ addComment),
-/* harmony export */   getAll: () => (/* binding */ getAll),
-/* harmony export */   getById: () => (/* binding */ getById)
+/* harmony export */   getAll: () => (/* binding */ getAll)
 /* harmony export */ });
+/* unused harmony export getById */
 /* harmony import */ var _send_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./send-request */ "./src/utilities/send-request.js");
 
 const BASE_URL = '/api/items';
@@ -3487,4 +3498,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.64452965ae552215b779b1d88867eba7.js.map
+//# sourceMappingURL=App.a13d9e551ad04e632259e3e7d47003dc.js.map

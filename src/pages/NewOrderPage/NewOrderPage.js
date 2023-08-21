@@ -25,7 +25,6 @@ export default function NewOrderPage({ user, setUser }) {
       }, []);
       setMenuItems(items);
       setActiveCat(categoriesRef.current[0]);
-      console.log(activeCat)
     }
     getItems();
     async function getCart() {

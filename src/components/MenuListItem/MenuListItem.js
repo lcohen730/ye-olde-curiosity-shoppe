@@ -1,19 +1,29 @@
 import styles from './MenuListItem.module.scss';
 import item from '../../../models/itemSchema';
 import * as itemsAPI from '../../utilities/items-api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function MenuListItem({ menuItem, handleAddToOrder, setMenuItems, menuItems }) {
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState('');
+  const [commentLive, setCommentLive] = useState(false);
+
+  useEffect(function() {
+    async function getItems() {
+      const items = await itemsAPI.getAll();
+      setMenuItems(items);
+    }
+    getItems();
+    setCommentLive(false)
+  }, [commentLive]);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
-  async function handleOpenItem(itemId) {
+  /* async function handleOpenItem(itemId) {
     await itemsAPI.getById()
-  }
+  } */
 
   const handleContent = (evt) => {
     setContent(evt.target.value)
@@ -25,12 +35,14 @@ export default function MenuListItem({ menuItem, handleAddToOrder, setMenuItems,
       const createdComment = await itemsAPI.addComment(menuItem._id, { content });
       const newMenuItem = { ...menuItem };
       newMenuItem.comments.push(createdComment)
-      const newMenuItems = menuItems
+      const newMenuItems = menuItems;
       const index = newMenuItems.findIndex((item) => {
         return item._id === menuItem._id
-      })
+      });
       newMenuItems.splice(index, 1, newMenuItem)
       setMenuItems([...newMenuItems])
+      setCommentLive(true)
+      console.log('Menu Items: ', menuItems)
     }
     catch (e) {
       console.error(e)
@@ -45,9 +57,9 @@ export default function MenuListItem({ menuItem, handleAddToOrder, setMenuItems,
   ) */
 
   const filledArr = item.methods.getRating();
-  console.log(filledArr)
+  // console.log(filledArr)
   const emptyArr = item.methods.getRatingLeftover();
-  console.log(emptyArr)
+  // console.log(emptyArr)
   /* let filledStars = [...Array(filledArr)].map((_, i) => <span key={i}>★</span>);
   let emptyStars = [...Array(emptyArr)].map((_, i) => <span key={i}>☆</span>); */
   let filledStars = [...Array(4)].map((_, i) => <span key={i}>★</span>);
@@ -93,7 +105,6 @@ export default function MenuListItem({ menuItem, handleAddToOrder, setMenuItems,
             <div className={styles.commentsContainer}>
               <div className={styles.comments}>
                 <ul className={styles.commentsTitle}>Comments: {Array.isArray(menuItem.comments) ? menuItem.comments.map((comment) => {
-                  console.log(comment)
                   return (
                     <li className={styles.comment}>
                       <div className={styles.commentUser}>
